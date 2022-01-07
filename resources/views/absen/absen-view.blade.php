@@ -80,20 +80,23 @@
 
 
             <div class="row">   
-           @for($i=0;$i<10;$i++)
+           @foreach($user as $user)
           <div class="col-lg-3">
          <div class="card card-outline-primary">
           <img src="assets/images/gallery/1.jpg" class="card-img-top" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title text-primary">Card Sample Title</h5>
+            <h5 class="card-title text-primary">{{$user->name}}</h5>
             <hr>  
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p>jam masuk  :</p> 
+            <p>jam keluar :</p> 
+            <hr>  
+            <a href="" class="btn btn-danger col-12">absen masuk</a> 
      
          
           </div>
         </div>
         </div>
-          @endfor
+          @endforeach
         </div>
 
 
