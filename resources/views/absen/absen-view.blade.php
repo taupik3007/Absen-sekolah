@@ -102,20 +102,38 @@
             @endforeach
             </p>
             <hr>
+            <?php   $no = 0; ?>
               @foreach($user->presences as $presence)
                 @if(substr($presence->created_at,0,-9) == date('Y-m-d'))
                     @if($presence->checkout == null)
+                     
+                    <?php   $no++ ?>
                     <button class="btn btn-success col-lg-12" data-toggle="modal" data-target="#home{{$user->id}}">isi presensi hari ini</button>
                     @else
-                    <button class="btn btn-success col-lg-12" disabled="" data-toggle="modal" data-target="#defaultsizemodal{{$user->id}}">sudah isin presensi </button>
-                    @endif
-                @elseif(substr($presence->created_at,0,-9) != date('Y-m-d'))
-                @else
-                <button class="btn btn-danger col-lg-12" data-toggle="modal" data-target="#defaultsizemodal{{$user->id}}">isi presensi hari ini</button>
 
+                     <?php   $no++ ?>
+                    <button class="btn btn-success col-lg-12" disabled="" data-toggle="modal" data-target="#defaultsizemodal{{$user->id}}">sudah isi presensi </button>
+                    @endif
+                  @elseif(substr($presence->created_at,0,-9) != date('Y-m-d'))
+                    
+                      @if($no >= 1)
+                      @else
+                       <?php   $no++ ?>   
+                     <button class="btn btn-danger col-lg-12"  data-toggle="modal" data-target="#defaultsizemodal{{$user->id}}">sudah isin presensi </button>
+                     @endif
                 @endif
+
+              
+
               @endforeach
 
+              @if($no >= 1)
+                      @else
+                       <?php   $no++ ?>   
+                     <button class="btn btn-danger col-lg-12"  data-toggle="modal" data-target="#defaultsizemodal{{$user->id}}">isi presensi </button>
+                     @endif
+
+            
          
               <!-- Modal -->
                 <div class="modal fade" id="defaultsizemodal{{$user->id}}">">
@@ -132,7 +150,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        <a href="presence/{{$user->id}}" class="btn btn-primary"></a>
+                        <a href="presence/{{$user->id}}" class="btn btn-primary">ya</a>
                       </div>
                     </div>
                   </div>
@@ -153,7 +171,21 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        <a href="presence/{{$user->id}}" class="btn btn-primary"></a>
+                        <form action="presence/checkout" method="post"> 
+                        @csrf 
+                          <input type="text" hidden="" name="user_id" value="{{$user->id}}">
+                           @foreach($user->presences as $presence)
+            @if(substr($presence->created_at,0,-9) == date('Y-m-d') )
+                        <input type="text " hidden="" name="date" value="{{$presence->created_at}}">
+                        <input type="submit" class="btn btn-primary" value="ya">      
+           
+            @endif
+            @endforeach
+
+
+
+
+                        </form>
                       </div>
                     </div>
                   </div>

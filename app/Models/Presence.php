@@ -10,6 +10,7 @@ class Presence extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $primaryKey = 'presece_id';
 
     public function users()
     {
