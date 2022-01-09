@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', [App\Http\Controllers\Absen\AbsenController::class, 'index']);
+Route::get('/presence/{id}', [App\Http\Controllers\Absen\AbsenController::class, 'presence']);
 
 Auth::routes();
 

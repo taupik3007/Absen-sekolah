@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePresenceTable extends Migration
+class CreatePresencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePresenceTable extends Migration
      */
     public function up()
     {
-        Schema::create('presence', function (Blueprint $table) {
-            $table->bigIncrements('presece_id');
+        Schema::create('presences', function (Blueprint $table) {
+               $table->bigIncrements('presece_id');
             $table->unsignedBigInteger('user_id');
-            $table->date('checkout');
+            $table->timestamp('checkout')->nullable();
             $table->timestamps();
 
              $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -30,6 +30,6 @@ class CreatePresenceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presence');
+        Schema::dropIfExists('presences');
     }
 }

