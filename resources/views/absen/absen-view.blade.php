@@ -59,7 +59,7 @@
         <div class="container">
              <div class="row pt-2 pb-2">
         <div class="col-sm-9">
-        <h4 class="page-title">User Profile</h4>
+        <h4 class="page-title">{{date('Y-m-d')}}</h4>
         <ol class="breadcrumb">
             <li ><h2 style="font-size: 50px; font-family: arial;" id="jam"><h2></li>
             
@@ -82,23 +82,83 @@
            @foreach($user as $user)
           <div class="col-lg-3">
          <div class="card card-outline-primary">
-          <img src="assets/images/gallery/1.jpg" class="card-img-top" alt="Card image cap">
+          <img src="https://avatars.githubusercontent.com/u/68721151?s=64&v=4" class="card-img-top" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title text-primary">{{$user->name}}</h5>
             <hr> 
              <p>jam masuk  :  
             @foreach($user->presences as $presence)
+            @if(substr($presence->created_at,0,-9) == date('Y-m-d') )
             {{substr($presence->created_at,-9)}}  
+           
+            @endif
             @endforeach
             </p>
             <p>jam keluar :
               @foreach($user->presences as $presence)
+              @if(substr($presence->created_at,0,-9) == date('Y-m-d') )
             {{substr($presence->checkout,-9)}}  
+            @endif
             @endforeach
             </p>
-            <hr>  
-            <a href="presence/{{$user->id}}" class="btn btn-danger col-12">absen masuk</a> 
+            <hr>
+              @foreach($user->presences as $presence)
+                @if(substr($presence->created_at,0,-9) == date('Y-m-d'))
+                    @if($presence->checkout == null)
+                    <button class="btn btn-success col-lg-12" data-toggle="modal" data-target="#home{{$user->id}}">isi presensi hari ini</button>
+                    @else
+                    <button class="btn btn-success col-lg-12" disabled="" data-toggle="modal" data-target="#defaultsizemodal{{$user->id}}">sudah isin presensi </button>
+                    @endif
+                @elseif(substr($presence->created_at,0,-9) != date('Y-m-d'))
+                @else
+                <button class="btn btn-danger col-lg-12" data-toggle="modal" data-target="#defaultsizemodal{{$user->id}}">isi presensi hari ini</button>
+
+                @endif
+              @endforeach
+
+         
+              <!-- Modal -->
+                <div class="modal fade" id="defaultsizemodal{{$user->id}}">">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title"><i class="fa fa-star"></i> {{$user->name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                       apakah anda yakin isi presensi hari ini?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        <a href="presence/{{$user->id}}" class="btn btn-primary"></a>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
      
+
+                   <div class="modal fade" id="home{{$user->id}}">">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title"><i class="fa fa-star"></i> {{$user->name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                       apakah anda yakin pulang hari ini?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        <a href="presence/{{$user->id}}" class="btn btn-primary"></a>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+
          
           </div>
         </div>
