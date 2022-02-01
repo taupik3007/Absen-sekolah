@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\Absen\AbsenController::class, 'index']);
 Route::get('/presence/{id}', [App\Http\Controllers\Absen\AbsenController::class, 'presence']);
 Route::post('/presence/checkout', [App\Http\Controllers\Absen\AbsenController::class, 'checkout']);
+Route::get('/checkrole/{role}', [App\Http\Controllers\Absen\AbsenController::class, 'checkrole']);
 
 
 Auth::routes();

