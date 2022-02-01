@@ -22,6 +22,9 @@ Route::post('/presence/checkout', [App\Http\Controllers\Absen\AbsenController::c
 Route::get('/checkrole/{role}', [App\Http\Controllers\Absen\AbsenController::class, 'checkrole']);
 
 Route::get('/report', [App\Http\Controllers\Absen\ReportController::class, 'index']);
+Route::get('/report/monthly', [App\Http\Controllers\Absen\ReportController::class, 'monthlyReport']);
+Route::post('/image/{id}', [App\Http\Controllers\Absen\ReportController::class, 'image']);
+
 
 
 Auth::routes();

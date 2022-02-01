@@ -86,7 +86,8 @@
            @foreach($user as $user)
           <div class="col-lg-3">
          <div class="card card-outline-primary">
-          <img src="https://avatars.githubusercontent.com/u/68721151?s=64&v=4"class="card-img-top" alt="Card image cap">
+        <!-- @php  $image = Storage::url($user->image) @endphp -->
+          <img src="Storage::disk('public')->url($user->image)" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title text-primary">{{$user->name}}</h5>
             <hr> 

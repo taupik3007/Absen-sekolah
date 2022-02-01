@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
-  <title>Laporan Presensi Tanggal </title>
+  <title>Laporan Presensi Tanggal {{$tanggal}}</title>
   <!--favicon-->
   <link rel="icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon">
   <!-- simplebar CSS-->
@@ -75,22 +75,166 @@
         
         <div class="col-lg-12">
         
-           <div class="card">
+           <dsiv class="card">
               <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-header"><i class="fa fa-user-circle"></i>&nbsp ubah gambar <!-- {{Auth::user()->id}} --> </div>
+            <div class="card-header"><i class="fa fa-table"></i> Data Laporan tanggal {{$tanggal}}</div>
             <div class="card-body">
-            <form action="/image/{{Auth::user()->id}}" method="post" enctype="multipart/form-data">
-                @csrf
-            <div class="custom-file">
-                    <input type="file" name="image" class="custom-file-input" id="inputGroupFile04">
-                    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-                  </div>
-
-                  <input type="submit" class="bt btn-dark" value="submit">
-            </form>
-             
+              <form>
+               <div class="row" > 
+                <div class="col-md-9">
+              <select class="form-control" id="basic-select">
+                          <option>----- pilih -----</option>
+                          <option>Hari ini</option>
+                          <option>Laporan bulanan</option>
+                          <option>Option 3</option>
+                          <option>Option 4</option>
+                          <option>Option 5</option>
+              </select> 
+              </div> 
+              <div class="col-md-3"> 
+              <button type="button" class="btn btn-dark waves-effect waves-light  "> <i class="fa fa-search"></i> <span>Search</span> </button>
+            </div>
+              </div>
+              <br>
+              </form>
+              <div class="table-responsive">
+              <table id="example" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        
+                        <th>tanggal 1</th>
+                        <th>tanggal 2</th>
+                        <th>tanggal 3</th>
+                        <th>tanggal 4</th>
+                        <th>tanggal 5</th>
+                        <th>tanggal 6</th>
+                        <th>tanggal 7</th>
+                        <th>tanggal 8</th>
+                        <th>tanggal 9</th>
+                        <th>tanggal 10</th>
+                        <th>tanggal 11</th>
+                        <th>tanggal 12</th>
+                        <th>tanggal 13</th>
+                        <th>tanggal 14</th>
+                        <th>tanggal 15</th>
+                        <th>tanggal 16</th>
+                        <th>tanggal 17</th>
+                        <th>tanggal 18</th>
+                        <th>tanggal 19</th>
+                        <th>tanggal 20</th>
+                        <th>tanggal 20</th>
+                        <th>tanggal 20</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>alam</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                </tr><tr>
+                  <td>alam</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                </tr><tr>
+                  <td>alam</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                  <td>absen</td>
+                </tr>
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                       <th>Name</th>
+                        <th>Jam masuk</th>
+                        <th>Jam keluar</th>
+                        <th>tanggal 1</th>
+                        <th>tanggal 2</th>
+                        <th>tanggal 3</th>
+                        <th>tanggal 4</th>
+                        <th>tanggal 5</th>
+                        <th>tanggal 6</th>
+                        <th>tanggal 7</th>
+                        <th>tanggal 8</th>
+                        <th>tanggal 9</th>
+                        <th>tanggal 10</th>
+                        <th>tanggal 11</th>
+                        <th>tanggal 12</th>
+                        <th>tanggal 13</th>
+                        <th>tanggal 14</th>
+                        <th>tanggal 15</th>
+                        <th>tanggal 16</th>
+                        <th>tanggal 17</th>
+                        <th>tanggal 18</th>
+                        <th>tanggal 19</th>
+                        <th>tanggal 20</th>
+                    </tr>
+                </tfoot>
+            </table>
+            </div>
             </div>
           </div>
         </div>
