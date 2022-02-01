@@ -16,12 +16,12 @@ class AbsenController extends Controller
    public function index()
    {
    	
-   	$role = Role::where('name','guru')->orWhere('name','manajemen')->orWhere('name','staff')->get();
+   	$role = Role::where('name','guru')->orWhere('name','management')->orWhere('name','staff')->get();
    	// dd($role);
 
    	$user=User::With((['presences' => function ($q)  {
             $q->orderBy('created_at','desc');
-        }]))->get();
+        }]))->role(['management','guru','staff'])->get();
   		$status = null;
    	 // dd($user);
    	return view('absen/absen-view',compact(['user','status','role']));
@@ -30,7 +30,8 @@ class AbsenController extends Controller
    {
   
    	$role_name = $role;
-   	$role = Role::where('name','guru')->orWhere('name','manajemen')->orWhere('name','staff')->get();
+   	$role = Role::where('name','guru')->orWhere('name','management')->orWhere('name','staff')->get();
+   	// dd($role);
 
    	$user=User::With((['presences' => function ($q)  {
             $q->orderBy('created_at','desc');
@@ -72,4 +73,6 @@ class AbsenController extends Controller
 
 
    }
+
+   
 }

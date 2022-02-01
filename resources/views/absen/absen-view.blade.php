@@ -44,7 +44,7 @@
      
   <ul class="navbar-nav align-items-center right-nav-link">
     
-   
+   <a class="btn btn-dark" href="/report">laporan</a>
     
  
   </ul>
@@ -76,7 +76,7 @@
 
             <div class="card-body">
               @foreach($role as $role)
-              <a href="/checkrole/{{$role->name}}" class="btn btn-outline-primary">{{$role->name}}</a>
+              <a href="/checkrole/{{$role->name}}" class="btn btn-info btn-round waves-effect waves-light m-1">{{$role->name}}</a>
 
               @endforeach
               <br><br>
@@ -86,7 +86,7 @@
            @foreach($user as $user)
           <div class="col-lg-3">
          <div class="card card-outline-primary">
-          <img src="https://avatars.githubusercontent.com/u/68721151?s=64&v=4" class="card-img-top" alt="Card image cap">
+          <img src="https://avatars.githubusercontent.com/u/68721151?s=64&v=4"class="card-img-top" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title text-primary">{{$user->name}}</h5>
             <hr> 

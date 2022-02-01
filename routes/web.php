@@ -21,6 +21,8 @@ Route::get('/presence/{id}', [App\Http\Controllers\Absen\AbsenController::class,
 Route::post('/presence/checkout', [App\Http\Controllers\Absen\AbsenController::class, 'checkout']);
 Route::get('/checkrole/{role}', [App\Http\Controllers\Absen\AbsenController::class, 'checkrole']);
 
+Route::get('/report', [App\Http\Controllers\Absen\ReportController::class, 'index']);
+
 
 Auth::routes();
 
