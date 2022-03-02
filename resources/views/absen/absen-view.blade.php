@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
-  <title>Rocker - Bootstrap4  Admin Dashboard Template</title>
+  <title>Absensi sekolah</title>
   <!--favicon-->
   <link rel="icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon">
   <!-- simplebar CSS-->
@@ -79,15 +79,23 @@
               <a href="/checkrole/{{$role->name}}" class="btn btn-info btn-round waves-effect waves-light m-1">{{$role->name}}</a>
 
               @endforeach
+              <a href="/" class="btn btn-info btn-round waves-effect waves-light m-1">semua</a>
+
               <br><br>
 
 
             <div class="row">   
            @foreach($user as $user)
-          <div class="col-lg-3">
+          <div class="col-lg-3 " style="">
          <div class="card card-outline-primary">
         <!-- @php  $image = Storage::url($user->image) @endphp -->
-          <img src="Storage::disk('public')->url($user->image)" alt="Card image cap">
+          <img src="@if($user->image == null)
+          /image/default.jpg
+          @else
+          /image/{{$user->image}}.jpg
+          @endif
+
+          " alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title text-primary">{{$user->name}}</h5>
             <hr> 

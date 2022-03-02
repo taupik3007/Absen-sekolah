@@ -47,7 +47,7 @@
      
   <ul class="navbar-nav align-items-center right-nav-link">
     
-   
+   <a class="btn btn-dark" href="/">Kembali</a>
     
  
   </ul>
@@ -81,7 +81,7 @@
           <div class="card">
             <div class="card-header"><i class="fa fa-table"></i> Data Laporan tanggal {{$tanggal}}</div>
             <div class="card-body">
-              <form>
+            <!--   <form>
                <div class="row" > 
                 <div class="col-md-9">
               <select class="form-control" id="basic-select">
@@ -98,7 +98,7 @@
             </div>
               </div>
               <br>
-              </form>
+              </form> -->
               <div class="table-responsive">
               <table id="example" class="table table-bordered">
                 <thead>
@@ -115,12 +115,12 @@
                         <td>{{$user->name}}</td>
                         <td>
                         @foreach($user->presences as $presences)
-                        {{$presences->created_at}}
+                        {{ substr($presences->created_at,-9)}}
                         @endforeach 
                         </td>  
                         <td> 
                         @foreach($user->presences as $presences)
-                          {{$presences->checkout}}
+                          {{substr($presences->checkout,-9)}}
                         @endforeach</td>                 
                     </tr>
                      @endforeach
